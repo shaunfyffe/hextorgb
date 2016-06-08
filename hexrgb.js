@@ -52,7 +52,7 @@ angular.module('hexRgbApp', ['ngAnimate', 'ui.bootstrap', 'ui.router'])
             $state.go('color', {colorHex: colorCtrl.bgCol}, {notify: false});
             if (col == '') {
                 colorCtrl.rgbVal = '';
-                colorCtrl.hexValue = '';
+                resetHex();
                 return;
             }
             var colors = col.split(',');
@@ -172,6 +172,9 @@ angular.module('hexRgbApp', ['ngAnimate', 'ui.bootstrap', 'ui.router'])
             colorCtrl.bgCol = '';
             colorCtrl.hexValue = '';
             setTintShade(colorCtrl.bgCol.length);
+            for (var i = 0; i < 48; i++) {
+                colorCtrl.colorArray[i] = '#' + findRandColor();
+            }
         };
 
         var setRgb = function() {
