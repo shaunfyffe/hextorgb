@@ -172,8 +172,10 @@ angular.module('hexRgbApp', ['ngAnimate', 'ui.bootstrap', 'ui.router'])
             colorCtrl.bgCol = '';
             colorCtrl.hexValue = '';
             setTintShade(colorCtrl.bgCol.length);
-            for (var i = 0; i < 48; i++) {
-                colorCtrl.colorArray[i] = '#' + findRandColor();
+            if (colorCtrl.colorArray.length < 48) {
+                for (var i = 0; i < 48; i++) {
+                    colorCtrl.colorArray[i] = '#' + findRandColor();
+                }
             }
         };
 
