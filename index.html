@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="hexRgbApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="hexRgbApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="hexRgbApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="hexRgbApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HEXtoRGB.io | Convert HEX to RGB</title>
+  <base href="/" />
+  <meta name="description" content="Convert HEX to RGB or RGB to HEX and get tints and shades for every color.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="hexrgb.css">
+</head>
+<body>
+  <div ng-class="{'no-hist' : colorCtrl.colorHistory.length === 0}" ui-view>
+    <nav class="navbar navbar-custom navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand brand-link" href="/">HEX<sub>to</sub>RGB.io</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid container-table">
+      <div class="row vertical">
+       <div class="col-xs-12 bg-white ng-cloak">
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <form class="form-display">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                      <div class="input-group">
+                        <input type="text" class="input-box" ng-change="colorCtrl.convertToRgb(colorCtrl.hexValue)"
+                               ng-model="colorCtrl.hexValue" placeholder="hex" ui-view onload="colorCtrl.convertToRgb(colorCtrl.hexValue)" />
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <div class="input-group">
+                        <input type="text" class="input-box" ng-change="colorCtrl.convertToHex(colorCtrl.rgbVal)"
+                               ng-model="colorCtrl.rgbVal" ng-blur="colorCtrl.updateRgb(colorCtrl.rgbVal)" placeholder="rgb" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="color-display animate-sh" ng-style="{'background-color': colorCtrl.hexValue}" ng-show="colorCtrl.bgCol"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                  <button type="button" class="btn btn-default btn-sm btn-block btn-hist-space animate-sh"
+                          ng-click="colorCtrl.addToHistory()" ng-show="colorCtrl.bgCol">Save color to your session history</button>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                  <button type="button" class="btn btn-default btn-sm btn-block btn-rand-space"
+                          ng-click="colorCtrl.getRandColor()" ng-show="colorCtrl.bgCol">Generate a random color</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h4 class="text-prop animate-sh" ng-hide="colorCtrl.bgCol">Enter a HEX or RGB value or click a color below.</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 animate-sh" ng-show="colorCtrl.bgCol">
+                  <h3 class="text-prop tint-title-marg">Tints of #{{colorCtrl.bgCol}}</h3>
+                  <div class="row">
+                    <div ng-class="colorCtrl.tints.length > 1 ? 'col-md-2 col-xs-4' : 'col-xs-12 no-tint'" ng-repeat="tint in colorCtrl.tints track by $index">
+                      <div class="shade-tint animate-sh" ng-style="{'background-color': tint}" ng-click="colorCtrl.convertToRgb(tint)"></div>
+                      <p class="text-prop">{{tint}}</p>
+                    </div>
+                  </div>
+                  <h3 class="text-prop shade-title-marg">Shades of #{{colorCtrl.bgCol}}</h3>
+                  <div class="row">
+                    <div ng-class="colorCtrl.shades.length > 1 ? 'col-md-2 col-xs-4' : 'col-xs-12'" ng-repeat="shade in colorCtrl.shades track by $index">
+                      <div class="shade-tint animate-sh" ng-style="{'background-color': shade}" ng-click="colorCtrl.convertToRgb(shade)"></div>
+                      <p class="text-prop" style="margin-bottom: 10px;">{{shade}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row animate-sh" ng-hide="colorCtrl.bgCol">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-4 col-md-1" ng-repeat="col in colorCtrl.colorArray track by $index">
+                  <div class="rand-color-table" ng-style="{'background-color': col}" ng-click="colorCtrl.convertToRgb(col)"></div>
+                  <p class="text-prop">{{col}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer ng-cloak" ng-show="colorCtrl.colorHistory.length > 0">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h5>Saved colors <small>(store up to 12 at a time)</small>:</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3 col-sm-2 col-md-1" ng-repeat="hist in colorCtrl.colorHistory | limitTo:12 track by $index">
+            <div class="shade-tint" ng-style="{'background-color': hist}" ng-click="colorCtrl.convertToRgb(hist)"></div>
+            <p class="history-text">{{hist}}</p>
+            <button type="button" class="btn btn-danger btn-block btn-xs rem-hist-marg"
+                    ng-click="colorCtrl.remove(colorCtrl.colorHistory, $index)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.0.js"></script>
+    <script src="hexrgb.js"></script>
+  </div>
+</body>
+</html>

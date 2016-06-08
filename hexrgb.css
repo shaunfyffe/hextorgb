@@ -1,0 +1,228 @@
+/* app css stylesheet */
+
+@import url('http://getbootstrap.com/dist/css/bootstrap.css');
+html {
+  position: relative;
+  min-height: 100%
+}
+
+body {
+  margin-bottom: 140px;
+}
+
+h5 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body, .container-table {
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.animate-sh {
+  transition: all linear 0.2s;
+}
+
+.animate-sh.ng-show {
+  opacity: 1;
+}
+
+.animate-sh.ng-hide {
+  opacity: 0;
+  transition: all linear 0.0s;
+}
+
+.bg-white {
+  background-color: #FFFFFF;
+  color: #000000;
+  height: 100%;
+  width: 100%;
+}
+
+.btn-hist-space {
+  margin-top: 10px;
+}
+
+.btn-rand-space {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.brand-link {
+  font-family: 'Open Sans', sans-serif;
+  color: #FFFFFF;
+}
+
+.color-display {
+  border: solid 1px #999999;
+  border-radius: 6px;
+  height: 290px;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.container-table {
+  display: table;
+  width: 95%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  background-color: #FFFFFF;
+  border-top: 1px solid dimgray;
+}
+
+.form-display {
+  margin: 0 auto;
+}
+
+.history-text {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.input-box {
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: x-large;
+  border-bottom: solid 0.1px #999999;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;  float: none;
+  width: 100%;
+}
+
+.no-hist {
+  margin-bottom: 0px;
+}
+
+.no-tint {
+  margin-bottom: 35px;
+}
+
+.rand-color-table {
+  border: 0.5px dimgray;
+  border-radius: 6px;
+  width: 100%;
+  height: 50px;
+  float: none;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.rem-hist-marg {
+  margin: 3px 0 7px 0;
+}
+
+.shade-title-marg {
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 12px;
+}
+
+.shade-tint {
+  border: 1px dimgray;
+  border-radius: 6px;
+  width: 100%;
+  height: 50px;
+  float: none;
+  padding: 5px;
+}
+
+.tint-title-marg {
+  margin: 0 auto;
+  padding-bottom: 12px;
+}
+
+.text-prop {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+.vertical {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* navbar */
+.navbar-custom {
+  background-color: #F8F8F8;
+  border-color: #b7b7b7;
+}
+/* title */
+.navbar-custom .navbar-brand {
+  color: #333;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+  color: #5E5E5E;
+}
+/* link */
+.navbar-custom .navbar-nav > li > a {
+  color: #777;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  color: #333;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #E7E7E7;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #D5D5D5;
+}
+/* caret */
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+  border-top-color: #777;
+  border-bottom-color: #777;
+}
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #333;
+  border-bottom-color: #333;
+}
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+  border-top-color: #555;
+  border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-custom .navbar-toggle {
+  border-color: #DDD;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #DDD;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #CCC;
+}
+@media (max-width: 767px) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+  }
+}
