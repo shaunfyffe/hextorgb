@@ -184,7 +184,7 @@ angular.module('hexRgbApp', ['ngAnimate', 'ui.bootstrap', 'ui.router'])
             var red = (rgb >> 16) & 0xFF;
             var green = (rgb >> 8) & 0xFF;
             var blue = rgb & 0xFF;
-            colorCtrl.rgbVal = "rgb(" + [red, blue, green].join() + ")";
+            colorCtrl.rgbVal = "rgb(" + [red, green, blue].join() + ")";
             setTintShade(colorCtrl.bgCol.length);
             setNoTintOrShade(red, green, blue);
             $state.go('color', {colorHex: colorCtrl.bgCol}, {notify: false});
